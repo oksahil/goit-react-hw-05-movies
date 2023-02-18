@@ -1,4 +1,5 @@
-import {useState, useEffect} from "react";
+import PropTypes from 'prop-types';
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as Scroll from 'react-scroll';
 
@@ -77,4 +78,13 @@ export default Cast;
 Cast.defaultProps = {
   profile_path: defaultImg,
   character: "Sorry",
+}
+
+Cast.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.shape({
+        profile_path: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        original_name: PropTypes.string.isRequired,
+        character: PropTypes.string.isRequired,          
+    }))
 }

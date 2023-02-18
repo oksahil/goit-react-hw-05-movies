@@ -1,22 +1,14 @@
-// import MoviesSearch from "../../components/Movies/MoviesSearch/MoviesSearch";
-
-// const MoviesPage = () => {
-// return <MoviesSearch/>
-// }
-
-// export default MoviesPage;
-
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { ToastContainer, toast} from 'react-toastify';
-import * as Scroll from 'react-scroll';
+// import * as Scroll from 'react-scroll';
 import 'react-toastify/dist/ReactToastify.css';
 
 // import Modal from "./../../../shared/component/Modal/Modal";
 import {searchMovies} from './../../shared/services/getApi';
 import MoviesFindForm from "../../components/Movies/MoviesFindForm/MoviesFindForm";
 // import PostFindList from "./PostFindList/PostFindList";
-import Button from "./../../shared/component/Button/Button";
+// import Button from "./../../shared/component/Button/Button";
 // import MoviesImgModal from "./../../Movies/MoviesSearch/MoviesImgModal/MoviesImgModal";
 import Loader from "./../../shared/component/Loader/Loader";
 import Message from "./../../shared/component/Message/Message";
@@ -44,7 +36,7 @@ useEffect(() => {
             try {
                 setLoading(true);
             const hits = await searchMovies(search.trim().toLowerCase(), page);
-            setItems((prevItems) => ([...prevItems, ...hits]))
+            setItems(() => ([...hits]))
                 }
             catch (error) {
                 setError(error.message);
@@ -67,17 +59,17 @@ useEffect(() => {
         // setPage(1);
     }    
     
-const loadMore = () => {
-    // setPage((prevPage) => (prevPage + 1));
-    setSearchParams({ search, page: Number(page) + 1 });
+// const loadMore = () => {
+//     // setPage((prevPage) => (prevPage + 1));
+//     setSearchParams({ search, page: Number(page) + 1 });
     
-    scrolling();
-}
+//     scrolling();
+// }
 
-function scrolling() {
-    const scrollPhoto = Scroll.animateScroll;
-    scrollPhoto.scrollMore(560);
-  }    
+// function scrolling() {
+//     const scrollPhoto = Scroll.animateScroll;
+//     scrollPhoto.scrollMore(560);
+//   }    
     
 return (
     <>
@@ -88,7 +80,7 @@ return (
                                             Perhaps you are sending an empty request. Please enter a keyword to search." />}
             {loading && <Loader className={css.loader} />}
             <MoviesList items={items} />
-            {Boolean(items.length) && search !== null && <Button onClick={loadMore}>Load more...</Button>}
+            {/* {Boolean(items.length) && search !== null && <Button onClick={loadMore}>Load more...</Button>} */}
         
             <ToastContainer
                     position="top-left"
