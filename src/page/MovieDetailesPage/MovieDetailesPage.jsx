@@ -14,6 +14,9 @@ const MovieDetailesPage = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const getPosterPath = (poster_path) => {
+         if (poster_path === null) {
+      return `${defaultImg}`;
+    }    
     return `https://www.themoviedb.org/t/p/w300${poster_path}`;
 }
     useEffect(()=> {
@@ -37,7 +40,7 @@ function scrolling() {
         <Button className={css.btn} onClick={() => navigate(-1)}>Go back</Button>
         <div className={css.container}>
             
-                <div key={movie?.id } className={css.item}>
+            <div key={movie?.id } className={css.item}>
                <img  className={css.boxImg} src={getPosterPath(movie?.poster_path)} alt={movie?.title}/>
             </div>
             <div className={css.item}>
@@ -46,7 +49,7 @@ function scrolling() {
                 <h2 className={css.secondTitleMovie}>Overview</h2>
                 <p>{movie?.overview}</p>
                 <h2 className={css.secondTitleMovie}>Genres</h2>
-                    <p>{movie?.genres.map((genre) => (<li key={ genre?.id} className={css.itemGenre}>{genre?.name}</li>))}</p>
+                    <p>{movie?.genres.map((genre) => (<li key={genre?.id} className={css.itemGenre}>{genre?.name}</li>))}</p>
             </div>
             </div>
             <div className={css.container}>

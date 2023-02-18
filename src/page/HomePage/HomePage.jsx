@@ -57,7 +57,7 @@ return (
                                             Perhaps you are sending an empty request. Please enter a keyword to search." />}
         {loading && <Loader className={css.loader} />}
         <h1 className={css.titleMovie}>Trending today</h1>
-        <MoviesList items={items} />
+        < MoviesList items={items} />
         
         
 

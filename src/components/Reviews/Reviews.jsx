@@ -47,10 +47,11 @@ function scrollingUp() {
 
     return (
     <>
-            {error && <Message message="Sorry..." />}
+            {error && <Message message="Sorry...error..." />}
             {loading && <Loader className={css.loader} />}
+
             <ul className={css.list}>
-                {items.map(({ id, author, content }) =>
+                {items.length > 0 ? (items.map(({ id, author, content }) =>
                     
                     <li key={id}>
                        
@@ -59,8 +60,9 @@ function scrollingUp() {
                         <p>{content}</p>
                         </div>
                         
-                    </li>)}
-               
+                    </li>)) :
+                    (<Message message="Sorry...Sorry...Sorry, no reviews for this film!" />)
+                }            
                 {items.length !== 0 && <Button className={css.btn} onClick={scrollingUp}>UP</Button>}
             </ul>
     </>

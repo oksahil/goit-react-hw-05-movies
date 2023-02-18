@@ -7,6 +7,7 @@ const instance = axios.create({
             }
 })
 
+
 export const getMoviesList = async () => {
     const {data} = await instance.get(`trending/movie/day?`);
     return data.results;

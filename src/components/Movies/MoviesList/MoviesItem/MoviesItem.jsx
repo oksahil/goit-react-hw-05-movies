@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 // import { getMovieId } from 'shared/services/getApi';
-// import {getMoviesList} from './../../../../shared/services/getApi'
+// import {getMoviesList} from './../../../../shared/services/getApi';
+
 import css from "./../moviesList.module.css";
 
 
-function MoviesItem({ id, original_title }) {
+function MoviesItem({ id, original_title}) {
 
   return (
         <>

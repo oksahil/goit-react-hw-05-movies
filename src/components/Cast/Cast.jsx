@@ -37,8 +37,11 @@ const Cast = () => {
         fetchCast();
     }, [id, setItems]);
 
-const getPosterPath = (poster_path) => {
-    return `https://www.themoviedb.org/t/p/w200${poster_path}`;
+    const getPosterPath = (profile_path) => {
+     if (profile_path === null) {
+      return `${defaultImg}`;
+    }
+    return `https://www.themoviedb.org/t/p/w200${profile_path}`;
 }
 
 function scrollingStart() {
@@ -54,15 +57,15 @@ function scrollingUp() {
     <>
         {error && <Message message="Sorry..." />}
         {loading && <Loader className={css.loader} />}
-        <ul className={css.container}>
-        {items.map(({id, original_name, profile_path=defaultImg, character}) => 
+            <ul className={css.container}>
+                {items.length > 0 ? (items.map(({id, original_name, profile_path=defaultImg, character}) => 
                 <li key={id} className={css.itemContainer}>
                 <img className={css.boxImg} src={getPosterPath(profile_path)} alt={original_name} />
                 <div className={css.text}><span className={css.secondTitleMovie}>Name:</span> {original_name}</div>
                 <div className={css.text}><span className={css.secondTitleMovie}>Character:</span> {character}</div>
-                </li>
-        )}
-         
+                </li>)) :
+                    (<Message message="Sorry...Sorry...Sorry, no cast for this film!" />)
+                }          
             </ul>
             {items.length !== 0 && <Button className={css.btn} onClick={scrollingUp}>UP</Button>}
     </>
