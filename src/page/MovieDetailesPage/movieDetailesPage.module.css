@@ -1,0 +1,43 @@
+.boxImg {
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 50px rgba(69, 8, 125, 0.5);
+}
+
+.container {
+    display: flex;
+    padding: 25px;
+    justify-content: center;
+    align-content: center;
+    border-radius: 5px;
+    /* box-shadow: 0 0 5px rgba(181, 18, 18, 0.5); */
+    max-width: max-content;
+}
+
+.item {
+    padding: 15px;
+    max-width: 50%;
+    
+}
+
+.titleMovie {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.1923076923;
+    letter-spacing: 0.03em;
+    text-align: left;
+    color: rgba(181, 18, 18, 1);
+}
+
+.secondTitleMovie {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.1923076923;
+    letter-spacing: 0.03em;
+    text-align: left;
+    color: rgba(181, 18, 18, 1);
+    margin-right: 10px;
+}
+.itemGenre {
+color: rgba(181, 18, 18, 1);
+}

@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import initialState from "./initialState";
 // import useForm from "shared/hooks/useForm";
 
-import css from "./postFindForm.module.css"
+import css from "./moviesFindForm.module.css";
 
-const PostFindForm = ({ onSubmit }) => {
+const MoviesFindForm = ({ onSubmit }) => {
     // const [state, handleChange, handleSubmit] = useForm({initialState, onSubmit });
         const [state, setState] = useState({ ...initialState });
 
@@ -19,9 +19,9 @@ const handleChange = ({target}) => {
 
         const handleSubmit = (e) => {
             e.preventDefault();
-            onSubmit(find);
+            onSubmit(search);
     };
-        const { find } = state;
+        const { search } = state;
         return (
             <header className={css.findBar}>
                 <form className={css.form} onSubmit={handleSubmit}>
@@ -31,11 +31,11 @@ const handleChange = ({target}) => {
 
                     <input
                         className={css.findFormInput}
-                        name="find"
-                        value={find}
+                        name="search"
+                        value={search}
                         onChange={handleChange}
                         type="text"
-                        placeholder="Search photos"
+                        placeholder="Search movies"
                         required
                     />
                 </form>
@@ -44,8 +44,8 @@ const handleChange = ({target}) => {
     }
 
 
-export default PostFindForm;
+export default MoviesFindForm;
 
-PostFindForm.propTypes = {
+MoviesFindForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
 }
