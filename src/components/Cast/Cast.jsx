@@ -25,8 +25,7 @@ const Cast = () => {
                 const result = await getMovieCastId(id);
                 setItems(result);
                 scrollingStart();
-                
-            }
+                }
             catch (error) {
                 setError(error.message);
                 }
@@ -34,7 +33,6 @@ const Cast = () => {
                 setLoading(false);
                 } 
         }
-
         fetchCast();
     }, [id, setItems]);
 

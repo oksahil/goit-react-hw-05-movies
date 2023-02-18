@@ -1,4 +1,5 @@
-import {useState, useEffect} from "react";
+import PropTypes from 'prop-types';
+import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link, Outlet } from "react-router-dom";
 import * as Scroll from 'react-scroll';
 import 'react-toastify/dist/ReactToastify.css';
@@ -69,4 +70,20 @@ MovieDetailesPage.defaultProps = {
     character: "Sorry",
     vote_average: "Sorry",
     overview: "Sorry",
+    movie: [],
+    genre: [],
 }
+
+MovieDetailesPage.propTypes = {
+    movie: PropTypes.arrayOf(PropTypes.shape({
+            profile_path: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            character: PropTypes.string.isRequired,
+            vote_average: PropTypes.string.isRequired,
+            overview: PropTypes.string.isRequired,
+            genre: PropTypes.arrayOf(PropTypes.shape({
+                id: PropTypes.number.isRequired,
+                name: PropTypes.string.isRequired,
+            }))
+    })) 
+};

@@ -1,4 +1,5 @@
-import {useState, useEffect} from "react";
+import PropTypes from 'prop-types';
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as Scroll from 'react-scroll';
 
@@ -70,3 +71,15 @@ function scrollingUp() {
 }
 
 export default Reviews;
+
+Reviews.defaultProps = {
+  items: [],
+}
+
+Reviews.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.shape({
+        author: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        content: PropTypes.string.isRequired,       
+    }))
+}

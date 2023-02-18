@@ -33,7 +33,7 @@ MoviesList.defaultProps = {
  
 MoviesList.propTypes = {
     items: PropTypes.arrayOf(PropTypes.shape({
-
-        
-   })) 
+            original_title: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            })) 
 };
