@@ -17,6 +17,8 @@ const Reviews = () => {
     const [error, setError] = useState(null);
     const {id} = useParams();
 
+
+
     useEffect(()=> {
         const fetchReviews = async() => {
             try {
@@ -55,12 +57,12 @@ function scrollingUp() {
                 {items.length > 0 ? (items.map(({ id, author, content }) =>
                     
                     <li key={id}>
-                       
+                  
                         <div className={css.container}>
                         <p className={css.text}><span className={css.secondTitleMovie}>Author:</span> {author}</p>
                         <p>{content}</p>
                         </div>
-                        
+                     
                     </li>)) :
                     (<Message message="Sorry...Sorry...Sorry, no reviews for this film!" />)
                 }            

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from "react";
-import { useParams, useNavigate, Link, Outlet } from "react-router-dom";
+import { useParams, useNavigate, Link, Outlet, useLocation } from "react-router-dom";
 import * as Scroll from 'react-scroll';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -14,6 +14,14 @@ const MovieDetailesPage = () => {
     const [movie, setMovie] = useState();
     const { id } = useParams();
     const navigate = useNavigate();
+
+    const location = useLocation();
+
+    // console.log(location.state.from.search);
+
+    const from = location.state?.from || `/movies/`;
+    const goBack = () => navigate(from);
+    
     const getPosterPath = (poster_path) => {
          if (poster_path === null) {
       return `${defaultImg}`;
@@ -38,7 +46,7 @@ function scrolling() {
   }   
     return (
         <>
-        <Button className={css.btn} onClick={() => navigate(-1)}>Go back</Button>
+        <Button className={css.btn} onClick={goBack}>Go back</Button>
         <div className={css.container}>
             
             <div key={movie?.id } className={css.item}>
