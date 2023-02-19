@@ -53,12 +53,12 @@ useEffect(() => {
     if (query === search) {
         toast.error('Please enter another request.');
         return;
-        }
+        } 
         setSearchParams({ query, page: 1 });
         setItems([]);
         // setPage(1);
     }    
-    
+
 // const loadMore = () => {
 //     // setPage((prevPage) => (prevPage + 1));
 //     setSearchParams({ search, page: Number(page) + 1 });

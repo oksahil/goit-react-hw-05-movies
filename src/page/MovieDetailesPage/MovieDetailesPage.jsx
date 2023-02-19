@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import * as Scroll from 'react-scroll';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { getMovieDetailesId } from "./../../shared/services/getApi";
 import Button from "shared/component/Button/Button";
+import Loader from 'shared/component/Loader/Loader';
 import defaultImg from "./../../Img/defaultImg.png";
 
 import css from "./movieDetailesPage.module.css"
@@ -66,7 +67,9 @@ function scrolling() {
                 <Link to="reviews" state={{from: goBack}}><Button className={css.btn}>Reviews</Button></Link>
                 {scrolling()}
             </div>
-            <Outlet/>
+                <Suspense fallback={<Loader />}>
+                        <Outlet />
+                </Suspense>
             </>
     )
 } 
