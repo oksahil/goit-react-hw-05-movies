@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from "react";
-import { useParams, useNavigate, Link, Outlet, useLocation } from "react-router-dom";
+import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import * as Scroll from 'react-scroll';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,14 +13,14 @@ import css from "./movieDetailesPage.module.css"
 const MovieDetailesPage = () => {
     const [movie, setMovie] = useState();
     const { id } = useParams();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const location = useLocation();
 
     // console.log(location.state.from.search);
 
-    const from = location.state?.from || `/movies/`;
-    const goBack = () => navigate(from);
+    const goBack = location.state?.from ?? `/`;
+    // const goBack = () => navigate(from);
     
     const getPosterPath = (poster_path) => {
          if (poster_path === null) {
@@ -46,7 +46,7 @@ function scrolling() {
   }   
     return (
         <>
-        <Button className={css.btn} onClick={goBack}>Go back</Button>
+            <Link to={goBack}><Button className={css.btn}>Go back</Button></Link>
         <div className={css.container}>
             
             <div key={movie?.id } className={css.item}>
@@ -62,8 +62,8 @@ function scrolling() {
             </div>
             </div>
             <div className={css.container}>
-                <Link to="cast"><Button className={css.btn}>Cast</Button></Link>
-                <Link to="reviews"><Button className={css.btn}>Reviews</Button></Link>
+                <Link to="cast" state={{from: goBack}}><Button className={css.btn}>Cast</Button></Link>
+                <Link to="reviews" state={{from: goBack}}><Button className={css.btn}>Reviews</Button></Link>
                 {scrolling()}
             </div>
             <Outlet/>
